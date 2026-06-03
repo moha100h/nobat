@@ -5,4 +5,4 @@ COPY master_bot/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY master_bot/ ./master_bot/
 COPY shared/ ./shared/
-CMD ["python","-m","master_bot.main"]
+CMD ["python","-m","master_bot"]

@@ -5,4 +5,4 @@ COPY scheduler/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY scheduler/ ./scheduler/
 COPY shared/ ./shared/
-CMD ["python","-m","scheduler.main"]
+CMD ["python","-m","scheduler"]

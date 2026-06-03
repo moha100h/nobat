@@ -37,9 +37,12 @@ EOF
 success ".env created"
 docker compose build --no-cache
 docker compose up -d
-RETRIES=30
-until curl -sf http://localhost:8000/health >/dev/null 2>&1 || [ $RETRIES -eq 0 ]; do sleep 3;RETRIES=$((RETRIES-1));echo -n "."; done
+info "Waiting for backend to become healthy..."
+RETRIES=60
+until [ "$(docker inspect -f '{{.State.Health.Status}}' nobat_backend 2>/dev/null)" = "healthy" ] || [ $RETRIES -eq 0 ]; do
+  sleep 2; RETRIES=$((RETRIES-1)); echo -n "."
+done
 echo ""
-[ $RETRIES -eq 0 ] && error "Backend did not start. Run: docker compose logs backend"
+[ $RETRIES -eq 0 ] && error "Backend did not become healthy. Run: docker compose logs backend"
 success "Done!"
 docker compose ps
