@@ -1,0 +1,9 @@
+aiogram==3.7.0
+aiohttp==3.9.5
+python-dotenv==1.0.1
+jdatetime==4.1.1
+httpx==0.27.0
+redis[hiredis]==5.0.4
+cryptography==42.0.7
+pytz==2024.1
+pydantic-settings==2.2.1
