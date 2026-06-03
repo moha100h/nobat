@@ -36,3 +36,7 @@ async def main():
         await bot.session.close()
         await redis.aclose()
         logger.info("Master Bot stopped.")
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
